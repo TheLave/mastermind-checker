@@ -1,0 +1,34 @@
+.help {
+  min-height: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 0 25px;
+
+  .guide {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .colors {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-height: 800px) {
+  .help {
+    justify-content: unset;
+  }
+}

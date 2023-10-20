@@ -1,0 +1,64 @@
+<div class="mastermind">
+  <div class="data">
+    <div class="input">
+      <div class="block">
+        <h1>Answer</h1>
+
+        <div class="answer">
+          <app-pin
+            *ngFor="let pin of answer; index as i"
+            [color]="pin.number != undefined ? 'white' : 'grey'"
+            [(number)]="pin.number"
+            [pointer]="true"
+            [menuOpen]="currentMenu == 'answer' + i"
+            (numberChange)="onNumberChange(i, 'answer')"
+          ></app-pin>
+        </div>
+      </div>
+
+      <div class="block">
+        <h1>Guess</h1>
+
+        <div class="guess">
+          <app-pin
+            *ngFor="let pin of guess; index as i"
+            [color]="pin.number != undefined ? 'white' : 'grey'"
+            [(number)]="pin.number"
+            [pointer]="true"
+            [menuOpen]="currentMenu == 'guess' + i"
+            (numberChange)="onNumberChange(i, 'guess')"
+          ></app-pin>
+        </div>
+      </div>
+    </div>
+
+    <div class="output">
+      <h1>Result</h1>
+
+      <div class="pins">
+        <app-pin [color]="results[0]"></app-pin>
+        <app-pin [color]="results[1]"></app-pin>
+      </div>
+
+      <div class="pins">
+        <app-pin [color]="results[2]"></app-pin>
+        <app-pin [color]="results[3]"></app-pin>
+      </div>
+    </div>
+  </div>
+
+  <h1>Attempts: {{ attempts }}</h1>
+
+  <div class="button-group">
+    <button appRipple (click)="resetAttempts()">Reset attempts</button>
+    <button appRipple (click)="resetPins()">Reset pins</button>
+    <button
+      appRipple
+      (click)="checkInput()"
+      [ngClass]="{ disabled: !canCheckInput }"
+      [disabled]="!canCheckInput"
+    >
+      Check
+    </button>
+  </div>
+</div>
